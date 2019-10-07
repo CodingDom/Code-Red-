@@ -3,9 +3,9 @@
         <h1>Welcome to codeRed!</h1>
         <p>Use the search below to find help with any coding troubles you may have.</p>
         <div class="row justify-content-center">
-            <form class="search-box" autocomplete="off">
-                <input class="search-txt" type="text" id="searchMain" name="" placeholder="Let's Search!">
-                <button type="submit" class="search-btn icon ion-md-search"></button>
+            <form #myForm="ngForm" class="search-box" autocomplete="off" (ngSubmit)='search(myForm)'>
+                <input class="search-txt" type="text" id="searchMain" name="search" placeholder="Let's Search!" ngModel>
+                <button type="submit" class="search-btn icon ion-md-search" value="Search"></button>
             </form>
         </div>
     </div>
