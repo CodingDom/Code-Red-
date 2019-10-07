@@ -15,7 +15,8 @@
           <label for="inputPassword">Password</label>
           <div class="input-group">
               <span class="input-group-addon"><span class="icon ion-md-lock"></span></span>
-          <input [type]='showPassword ? "text" : "password"' class="form-control" id="inputPassword" placeholder="Password" required>
+              <input [type]='showPassword ? "text" : "password"' class="form-control" id="inputPassword" placeholder="Password" required>
+              <span (click)='togglePassword()' class="input-group-addon"><span [class]='showPassword ? "icon ion-md-eye" : "icon ion-md-eye-off"'></span></span>
           </div>
         </div>
         <!-- <ng-container *ngIf="mode != 'login'"> -->

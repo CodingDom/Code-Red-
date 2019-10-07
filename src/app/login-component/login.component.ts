@@ -25,8 +25,13 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class LoginComponent implements OnInit {
   private mode: string = "login";
+  private showPassword: boolean = false;
 
   constructor() { }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
 
   modeSwitch() {
     this.mode = this.mode == "login" ? "signup" : "login";
