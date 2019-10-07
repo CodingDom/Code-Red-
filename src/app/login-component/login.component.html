@@ -6,16 +6,25 @@
       <div class="form-row">
         <div class="form-group col-12">
           <label for="inputEmail">Email</label>
+          <div class="input-group">
+          <span class="input-group-addon"><span class="icon ion-md-person"></span></span>
           <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+          </div>
         </div>
         <div class="form-group col-12">
           <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+          <div class="input-group">
+              <span class="input-group-addon"><span class="icon ion-md-lock"></span></span>
+          <input [type]='showPassword ? "text" : "password"' class="form-control" id="inputPassword" placeholder="Password" required>
+          </div>
         </div>
         <!-- <ng-container *ngIf="mode != 'login'"> -->
         <div class="form-group col-12" [@slideInOut]="mode">
             <label for="inputPasswordConfirm">Confirm Password</label>
+            <div class="input-group">
+                <span class="input-group-addon"><span class="icon ion-md-lock"></span></span>
             <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Confirm Password" [required]='mode == "signup" ? true : null'>
+            </div>
         </div>
         <!-- </ng-container> -->
       </div>

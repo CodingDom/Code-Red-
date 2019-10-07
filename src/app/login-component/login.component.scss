@@ -7,6 +7,35 @@ form {
     box-shadow: 0 0 17px 5px white;
 }
 
+.input-group {
+    margin-top:0px;
+    margin-bottom:0px;
+    border-bottom: 1px solid white;
+}
+
+.input-group-addon {
+    background:transparent;
+    border-radius: 0px;
+    border:0px;
+    font-size: 18px;
+    color:gray;
+}
+
+.icon{
+    font-size:30px;
+}
+
+.form-control, .form-control:focus {
+    background:transparent;
+    border-radius: 0px;
+    border:0px;
+    padding:10px;
+    color:white;
+    font-size:21px;
+    outline: none;
+    box-shadow: none;
+}
+
 .btn-link {
     margin-bottom: 0;
     padding: 0;
