@@ -21,7 +21,7 @@ export class AppComponent {
           if (val instanceof RoutesRecognized) {
 
               this.globals.searchQuery = val.state.root.firstChild.params.q;
-              this.location = val.state.root.firstChild.url[0].path;
+              this.location = val.state.root.firstChild.url[0] ? val.state.root.firstChild.url[0].path: "";
 
           }
       });
