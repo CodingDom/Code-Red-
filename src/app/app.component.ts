@@ -9,6 +9,7 @@ import { Globals } from './globals';
 })
 export class AppComponent {
   title = 'code-red-angular';
+  private location: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private globals: Globals) {
 
@@ -20,6 +21,7 @@ export class AppComponent {
           if (val instanceof RoutesRecognized) {
 
               this.globals.searchQuery = val.state.root.firstChild.params.q;
+              this.location = val.state.root.firstChild.url[0].path;
 
           }
       });
