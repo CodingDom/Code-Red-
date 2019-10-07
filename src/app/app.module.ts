@@ -8,13 +8,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login-component/login.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SearchComponent } from './search/search.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { Globals } from './globals';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomepageComponent,
-    SearchComponent
+    SearchComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,7 @@ import { SearchComponent } from './search/search.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
