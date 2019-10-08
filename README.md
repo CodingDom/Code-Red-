@@ -1,27 +1,21 @@
-# CodeRedAngular
+# Code Red
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.8.
+Have trouble understanding coding? Wondering... "Why won't my code work? or "Why does it work that way but not this way?" Code Red is a web based app that is a one stop coding resource. Users can search through Youtube, Reddit, and Stack Overflow to answer any questions they have in regards to coding. Users also have the ability to code on the website using our code editor. Users may also bookmark any resource they find to review later. Happy coding!
 
-## Development server
+***Link:*** <a href="https://code-red-app.herokuapp.com/">https://code-red-app.herokuapp.com/</a>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Preview
 
-## Code scaffolding
+<img src="https://i.imgur.com/4yfa6Qk.png" width="100%">
+<img src="https://i.imgur.com/BKERBgO.png" width="100%">
+<img src="https://i.imgur.com/bPtN2gs.png" width="100%">
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technologies
 
-## Build
+### Front End
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+<img align="middle" src="https://i.imgur.com/hoqTpFD.png" alt="HTML5" width="25%"/>&nbsp; &nbsp;<img align="middle" src="https://raw.githubusercontent.com/remojansen/logo.ts/master/ts.png" alt="TypeScript" width="10%"/>&nbsp; &nbsp;<img src="https://cdn.worldvectorlogo.com/logos/angular-3.svg" align="middle" width="20%"/>
 
-## Running unit tests
+### Back End
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+<img align="middle" src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png" width="15%"><img align="middle" src="http://www.michaelwooton.com/assets/img/express.png" width="25%"><img align="middle" src="https://cdn.iconscout.com/icon/free/png-256/sequelize-1-1175002.png" width="20%"><img align="top" src="https://www.sqlclusters.com/img/index/mysql-logo.png" width="13%">
