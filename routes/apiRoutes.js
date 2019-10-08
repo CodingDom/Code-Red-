@@ -110,4 +110,9 @@ module.exports = function(app, passport) {
       });
     }
   });
+
+  //Routes for search engines
+  app.get("/api/youtube", function(req, res) {
+
+  });
 };
