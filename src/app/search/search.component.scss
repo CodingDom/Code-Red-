@@ -1,9 +1,17 @@
+@import "../../variables.scss";
+
 .mysearch {
     padding: 10px;
 }
 
 .transparent {
     background-color: transparent;
+}
+
+.spinner-border {
+    height: 45vh;
+    width: 45vh;
+    position: absolute;
 }
 
 .list-group-item-dark {
@@ -22,7 +30,7 @@
     background: #2c2c2c;
     color: white;
     padding:5px;
-    // height:550px;
+    border: 1px solid white;
 }
 
 /* Video Css */
@@ -50,4 +58,20 @@ margin:20px;
 
 .card-footer {
     background-color:#f5a148;
+}
+
+.container,.container-fluid {
+    padding-left: 60px;
+}
+
+@media all and (min-width: #{map-get($grid-breakpoints,sm)}) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+@media all and (min-width: #{map-get($grid-breakpoints,md)}) {
+    .card-columns {
+        column-count: 3;
+    }
 }

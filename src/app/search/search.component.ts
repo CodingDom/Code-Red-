@@ -11,7 +11,7 @@ import { filter } from 'minimatch';
 })
 export class SearchComponent implements OnInit {
   private searchQuery: string = "";
-  private items: any = [];
+  private items: any = null;
   private source: string;
 
   constructor(private http: HttpClient,private route: ActivatedRoute, private router: Router, private globals: Globals) { }
