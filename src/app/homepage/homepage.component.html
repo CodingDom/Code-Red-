@@ -1,12 +1,17 @@
 <div class="landing-page">
-    <div class="page-content">
-        <h1>Welcome to codeRed!</h1>
-        <p>Use the search below to find help with any coding troubles you may have.</p>
-        <div class="row justify-content-center">
-            <form #myForm="ngForm" class="search-box" autocomplete="off" (ngSubmit)='search(myForm)'>
-                <input class="search-txt" type="text" id="searchMain" name="search" placeholder="Let's Search!" ngModel>
-                <button type="submit" class="search-btn icon ion-md-search" value="Search"></button>
-            </form>
+    <div class="container-fluid">
+        <div class="row modal-dialog-centered">
+            <div class="col-sm-9 offset-sm-1 text-center page-content d-flex justify-content-center flex-column">
+                <h1>Welcome to codeRed!</h1>
+                <p>Use the search below to find help with any coding troubles you may have.</p>
+                <div class="row justify-content-center">
+                    <form #myForm="ngForm" class="search-box" autocomplete="off" (ngSubmit)='search(myForm)'>
+                        <input class="search-txt" type="text" id="searchMain" name="search" placeholder="Let's Search!"
+                            ngModel>
+                        <button type="submit" class="search-btn icon ion-md-search" value="Search"></button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

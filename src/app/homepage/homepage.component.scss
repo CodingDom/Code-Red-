@@ -1,12 +1,61 @@
-.search-box{
-position: inherit;
-top: 50%;
-left: 50%;
-background: blue;
-height:60px;
-border-radius: 40px;
-padding:10px;
+.landing-page{
+    width: 100%;
+    height:100vh;
+    background:#000;
+    position: relative;
+    overflow: hidden;
+}
 
+.landing-page::after{
+    content:"";
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:url(/assets/images/bg01.jpg) no-repeat;
+    background-size:cover;
+    opacity: .3;
+    animation: anim 25s linear infinite;
+}
+
+@keyframes anim{
+    50%{
+        transform: scale(2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.page-content{
+    position:absolute;
+    width: calc(100% - 50px);
+    z-index: 2;
+}
+
+.container-fluid {
+    padding-left: 60px;
+}
+
+.page-content p{
+    color:white;
+}
+.page-content h1{
+    color:red;
+    font-size: 50px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.search-box{
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    background: blue;
+    height:60px;
+    border-radius: 40px;
+    padding:10px;
 }
 
 .search-btn{
@@ -48,57 +97,4 @@ padding:10px;
     line-height: 40px;
     width:0px;
 
-}
-
-
-.landing-page{
-    width: 100%;
-    height:100vh;
-    background:#000;
-    position: relative;
-    overflow: hidden;
-}
-
-.landing-page::after{
-    content:"";
-    position: absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    background:url(/assets/images/bg01.jpg) no-repeat;
-    background-size:cover;
-    opacity: .3;
-    animation: anim 25s linear infinite;
-}
-
-@keyframes anim{
-    50%{
-        transform: scale(2);
-    }
-    100%{
-        transform: scale(1);
-    }
-}
-
-.page-content{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    z-index: 1;
-    width: 100%;
-    max-width: 800px;
-    text-align: center;
-    padding: 0 40px;
-    box-sizing: border-box;
-}
-.page-content p{
-    color:white;
-}
-.page-content h1{
-    color:red;
-    font-size: 50px;
-    font-weight: 900;
-    margin-bottom: 20px;
 }
