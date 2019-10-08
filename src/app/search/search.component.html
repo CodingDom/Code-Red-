@@ -1,20 +1,33 @@
 <div class="mainPage">
     <div class="row justify-content-sm-center">
-        <form class="form-inline my-2 my-lg-0 mysearch">
-            <input class="form-control mr-lg-2" type="search" id="searchbox" placeholder="Search" aria-label="Search"
-                [value]='searchQuery'>
+        <form #searchForm="ngForm" (ngSubmit)="search(searchForm)" class="form-inline my-2 my-lg-0 mysearch">
+            <input class="form-control mr-lg-2" type="search" id="search" placeholder="Search" aria-label="Search"
+             name="search" [ngModel]='searchQuery'>
             <button class="btn btn-outline-primary my-2 my-sm-0 searchbtn" type="submit">Search</button>
         </form>
     </div>
 </div>
 
-<div class="col-sm-8 offset-sm-2">
-    <div class="card-columns">
-        <div class="card tubeCard" *ngFor='let item of items'>
-            <img class="card-img-top" [src]="item.snippet.thumbnails.high.url" [alt]="item.snippet.title">
-            <div class="card-body">
-                <h5 class="card-title" id="dataTitle">{{item.snippet.title}}</h5>
+<ng-container *ngIf="source == 'youtube'">
+    <div class="col-sm-8 offset-sm-2">
+        <div class="card-columns">
+            <div class="card tubeCard" *ngFor='let item of items'>
+                <img class="card-img-top" [src]="item.snippet.thumbnails.high.url" [alt]="item.snippet.title">
+                <div class="card-body">
+                    <h5 class="card-title" id="dataTitle">{{item.snippet.title}}</h5>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</ng-container>
+
+<ng-container *ngIf="source == 'reddit'">
+    <div class="col-sm-8 offset-sm-2">
+    <ul class="list-group list-group-flush holder">
+            <li *ngFor="let item of items; let odd = odd" [class]="(odd && 'list-group-item-dark' || 'transparent') + ' list-group-item'">
+                <h4><a [href]="item.data.url" target="_blank"><strong>{{ item.data.title }}</strong></a></h4>
+                <p><strong>Posted By:</strong> {{ item.data.author }}  <span class="float-right"><strong>Upvotes:</strong>{{item.data.score}}</span></p>
+            </li>
+    </ul>
+    </div>
+</ng-container>

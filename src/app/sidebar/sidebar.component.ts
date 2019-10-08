@@ -20,6 +20,7 @@ export class SidebarComponent implements OnInit {
   menuButton(e: Event) {
     const btn = (e.target as HTMLElement);
     const value = btn.getAttribute("value");
+    
     switch (value) {
       case "profile":
 

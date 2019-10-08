@@ -9,7 +9,7 @@ module.exports = function(app, passport) {
       return res.status(500).end();
     }
     // Limiting amount of information that may be changed
-    var updatedInfo = {};
+    const updatedInfo = {};
     if (req.body.displayName) {
       updatedInfo.displayName = req.body.displayName;
     }
@@ -135,4 +135,21 @@ module.exports = function(app, passport) {
       res.status(500).end();
     });
   });
+
+  app.get("/api/reddit", function(req, res) {
+    if (!req.query || !req.query.q) return res.status(404).end();
+    const queryURL = "https://www.reddit.com/r/learnprogramming/search.json?q=" + req.query.q + "&restrict_sr=1"; 
+    axios({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+          let children = response.data.data.children;
+
+          if(children.length > 10)
+          {
+           children = children.slice(0,10);
+          }
+          res.json({items:children});
+      });
+  })
 };
