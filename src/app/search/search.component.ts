@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchComponent implements OnInit {
   private searchQuery: string = "";
+  private items: any = [];
 
   constructor(private http: HttpClient,private route: ActivatedRoute, private router: Router, private globals: Globals) { }
 
@@ -24,10 +25,15 @@ export class SearchComponent implements OnInit {
       source = validSources[index];
     }
     
-    this.http.get("/api/"+source).subscribe(
-      resp => {
-        console.log(resp);
+    this.http.get(("/api/"+source), 
+    {
+      params: {
+        q: this.searchQuery
       }
+    }).subscribe(
+      resp => {
+        this.items = resp.items;
+      },
     )
   }
 

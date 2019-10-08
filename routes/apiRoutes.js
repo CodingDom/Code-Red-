@@ -1,4 +1,5 @@
-var db = require("../models");
+const db = require("../models");
+const axios = require("axios");
 
 module.exports = function(app, passport) {
   // Allowing users to update their profile information
@@ -113,6 +114,25 @@ module.exports = function(app, passport) {
 
   //Routes for search engines
   app.get("/api/youtube", function(req, res) {
+    if (!req.query || !req.query.q) return res.status(404).end();
+    let url = "https://www.googleapis.com/youtube/v3/search?part=snippet";
+    url += "&maxResults=9";
+    url += "&q=" + req.query.q.replace(" ","+");
 
+    // Making sure the search is code related
+    if (req.query.q.toLowerCase().indexOf("coding") === -1) url += "+coding";
+
+    url += "&key=" + process.env.youtube_key;
+    axios.get(url)
+    .then(function(resp) {
+      const items = resp.data.items;
+      res.json({
+        items : items
+      })
+    })
+    .catch(function(err) {
+      console.log(err);
+      res.status(500).end();
+    });
   });
 };
