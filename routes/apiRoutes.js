@@ -151,5 +151,23 @@ module.exports = function(app, passport) {
           }
           res.json({items:children});
       });
-  })
+  });
+
+  app.get("/api/stackoverflow", function(req, res) {
+    if (!req.query || !req.query.q) return res.status(404).end();
+      let url = "http://api.stackexchange.com/2.2/search/advanced?order=desc&sort=relevance&site=stackoverflow&key=";
+      url += process.env.stackoverflow_key;
+      url += "&q=" + req.query.q;
+      axios.get(url)
+      .then(function(resp) {
+        const items = resp.data.items;
+        res.json({
+          items : items
+        })
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(500).end();
+      });
+  });
 };
