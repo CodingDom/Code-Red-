@@ -1,6 +1,6 @@
 # Code Red
 
-Have trouble understanding coding? Wondering... "Why won't my code work? or "Why does it work that way but not this way?" Code Red is a web based app that is a one stop coding resource. Users can search through Youtube, Reddit, and Stack Overflow to answer any questions they have in regards to coding. Users also have the ability to code on the website using our code editor. Users may also bookmark any resource they find to review later. Happy coding!
+Have trouble understanding coding? Wondering... "Why won't my code work? or "Why does it work that way but not this way?" ***Code Red*** is a web based app that is a one stop coding resource. Users can search through Youtube, Reddit, and Stack Overflow to answer any questions they have in regards to coding. Users also have the ability to code on the website using our code editor. Users may also bookmark any resource they find to review later. Happy coding!
 
 ***Link:*** <a href="https://code-red-app.herokuapp.com/">https://code-red-app.herokuapp.com/</a>
 
