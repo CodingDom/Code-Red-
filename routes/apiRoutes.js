@@ -46,8 +46,30 @@ module.exports = function(app, passport) {
 
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json("/");
+  // app.post("/api/login", passport.authenticate("local", { failWithError: true }), function(req, res) {
+  //   res.json("/");
+  // },
+  // function(err, req, res, next) {
+  //   // Handle error
+  //   console.log("Handling error", err);
+  //   return res.status(401).send({ success: false, message: err })
+  // });
+  app.post("/api/login", function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+      if (err) { 
+        console.log(err); 
+        return next(err); 
+      }
+
+      if (!user) { 
+        return res.json({sucess: false, ...info})
+      }
+
+      req.logIn(user, function(err) {
+        if (err) { return next(err); }
+        return res.json({success: true});
+      });
+    })(req, res, next);
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to

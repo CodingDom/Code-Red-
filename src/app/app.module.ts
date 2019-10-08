@@ -10,6 +10,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { SearchComponent } from './search/search.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { Globals } from './globals';
+import { HttpClientModule } from '@angular/common/http';
+// import 'rxjs/add/operator/catch';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { Globals } from './globals';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [Globals],
   bootstrap: [AppComponent]
