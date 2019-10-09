@@ -28,7 +28,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   private mode: string = "login";
   private showPassword: boolean = false;
-  private errorMessage: string;
+  private errorMessages: any = [];
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -43,13 +43,13 @@ export class LoginComponent implements OnInit {
 
   handleResponse(resp: any) {
     if (resp.success) {
-      // console.log("Login Successful!");
       this.router.navigate([""]);
     } else {
       const msg = resp.message;
-      this.errorMessage = msg || "OOPS! Looks like something went wrong..";
+      console.log(msg);
+      this.errorMessages.push((msg || "OOPS! Looks like something went wrong.."));
       setTimeout(() => {
-        this.errorMessage = null;
+        this.errorMessages.shift();
       },2000);
     }
   }
@@ -59,20 +59,30 @@ export class LoginComponent implements OnInit {
       email: form.value.email,
       password: form.value.password
     }
-    const pwCheck = form.value.cofirmedPassword;
+    const pwCheck = form.value.passwordConfirm;
 
     if (this.mode == "login") {
       this.http.post("/api/login", userInfo).subscribe(
-        this.handleResponse, 
+        (resp: any) => {
+          if (resp.success) {
+            this.router.navigate([""]);
+          } else {
+            const msg = resp.message;
+            this.errorMessages.push((msg || "OOPS! Looks like something went wrong.."));
+            setTimeout(() => {
+              this.errorMessages.shift();
+            },2000);
+          }
+        }, 
         error => {
           console.log(error.message);
         }
         ); 
     } else {
       if (userInfo.password !== pwCheck) return this.handleResponse({success: false, message: "Passwords do not match"});
-      
+
       this.http.post("/api/signup", userInfo).subscribe(
-        this.handleResponse, 
+        this.handleResponse.bind(this), 
         error => {
           console.log(error.message);
         }

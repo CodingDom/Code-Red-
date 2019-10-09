@@ -23,7 +23,9 @@ export class SidebarComponent implements OnInit {
     
     switch (value) {
       case "profile":
-
+        if (!this.globals.user) {
+          this.router.navigate(["/login"]);
+        }
       break;
       case "code":
 

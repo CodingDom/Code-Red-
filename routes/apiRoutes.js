@@ -63,12 +63,16 @@ module.exports = function(app, passport) {
       }
 
       if (!user) { 
-        return res.json({sucess: false, ...info})
+        return res.json({success: false, ...info})
       }
 
       req.logIn(user, function(err) {
         if (err) { return next(err); }
-        return res.json({success: true});
+        const userInfo = {
+          email: req.user.email,
+          id: req.user.id
+        }
+        return res.json({success: true, ...userInfo});
       });
     })(req, res, next);
   });
@@ -109,6 +113,33 @@ module.exports = function(app, passport) {
         email: req.user.email,
         id: req.user.id
       });
+    }
+  });
+
+  app.get("/api/users/:id", function(req, res) {
+    if (req.user && req.user.id == req.params.id) {
+      res.json({
+        email: req.user.email,
+        id: req.user.id,
+        owner: true
+      }); 
+    } else {
+      db.User.findOne({ where: {id: req.params.id} }).then(user => {
+        if (user) {
+          const userInfo = {
+            displayName: user.displayName ? user.displayName : "Anonymous",
+            blurb: user.blurb
+          }
+          res.json(userInfo);
+        } else {
+          console.log("User not found");
+          res.status(404).end();
+        }
+      }).catch(err => {
+        console.log(err);
+        res.status(500).end();
+      })
+      
     }
   });
 

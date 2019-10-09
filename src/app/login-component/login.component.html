@@ -5,7 +5,7 @@
     <form ngNativeValidate #userForm="ngForm" (ngSubmit)="authenticate(userForm)">
       <div class="form-row">
         <div class="form-group col-12">
-          <p *ngIf='errorMessage && errorMessage != ""' id="error">{{ errorMessage }}</p>
+          <p *ngFor='let errorMessage of errorMessages' id="error">{{ errorMessage }}</p>
           <label for="inputEmail">Email</label>
           <span class="float-right return btn-link" routerLink="/" routerLinkActive="active"><span class="icon ion-md-home"></span> Return Home</span>
           <div class="input-group">
