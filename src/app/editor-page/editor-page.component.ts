@@ -12,6 +12,7 @@ const defaultHTML = `<!DOCTYPE html>
         }
         h1 {
             color: red;
+            text-align: center;
         }
     </style>
 </head>
