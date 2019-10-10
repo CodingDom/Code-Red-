@@ -12,7 +12,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { Globals } from './globals';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
-import { CodeEditorComponent } from './code-editor/code-editor.component';
+import { EditorPageComponent } from './editor-page/editor-page.component';
 // import 'rxjs/add/operator/catch';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { CodeEditorComponent } from './code-editor/code-editor.component';
     SearchComponent,
     SidebarComponent,
     ProfileComponent,
-    CodeEditorComponent
+    EditorPageComponent
   ],
   imports: [
     BrowserModule,

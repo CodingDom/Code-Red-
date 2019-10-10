@@ -4,7 +4,7 @@ import { LoginComponent } from './login-component/login.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
-import { CodeEditorComponent } from './code-editor/code-editor.component';
+import { EditorPageComponent } from './editor-page/editor-page.component';
 
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'search', component: SearchComponent},
   {path: 'users/:id', component: ProfileComponent},
-  {path: 'editor', component: CodeEditorComponent}
+  {path: 'editor', component: EditorPageComponent}
 ];
 
 @NgModule({
