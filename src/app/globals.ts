@@ -4,5 +4,6 @@ import { Injectable } from '@angular/core';
 export class Globals {
   searchQuery: string = '';
   user: any;
+  location: string = '';
   
 }

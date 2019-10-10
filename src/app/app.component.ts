@@ -19,9 +19,11 @@ export class AppComponent {
       this.router.events.subscribe(val => {
 
           if (val instanceof RoutesRecognized) {
-
-              this.globals.searchQuery = val.state.root.firstChild.params.q;
-              this.location = val.state.root.firstChild.url[0] ? val.state.root.firstChild.url[0].path: "";
+              const currRoute = val.state.root.firstChild;
+              const params = currRoute.params;
+              const source = params.source;
+              this.globals.searchQuery = params.q;
+              this.location = source || currRoute.url[0];
 
           }
       });

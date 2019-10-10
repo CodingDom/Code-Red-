@@ -1,4 +1,4 @@
 <ng-container *ngIf="location != 'login'">
-<sidebar></sidebar>
+<sidebar attr.currentroute='{{location}}'></sidebar>
 </ng-container>
 <router-outlet></router-outlet>

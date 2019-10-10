@@ -17,7 +17,7 @@
 
 #side-bar ul li {
     list-style: none;
-
+    position: relative;
 }
 
 .sideBtn {
@@ -35,9 +35,26 @@
     border: none;
 }
 
+.sideBtn > * {
+    pointer-events: none;
+  }
+
+.sideBtn .title {
+    font-size: 12px;
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    line-height: 12px;
+    display: none;
+}
+
 .sideBtn:hover,.sideBtn.active {
     color:cyan;
+}
 
+.sideBtn:hover .title, .sideBtn.active .title {
+    display: initial;
 }
 
 #side-bar[data-open] {

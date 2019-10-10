@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute, RoutesRecognized } from '@angular/router';
 import { Globals } from '../globals';
 
 @Component({
@@ -9,7 +9,8 @@ import { Globals } from '../globals';
 })
 export class SidebarComponent implements OnInit {
   private active: HTMLElement;
-
+  private activeRoute: string;
+  
   constructor(private route: ActivatedRoute, private router: Router, private globals: Globals) { }
 
   menuToggle(e: Event) {
@@ -48,7 +49,23 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.route.url);
+    this.router.events.subscribe(val => {
+
+      if (val instanceof RoutesRecognized) {
+          const currRoute = val.state.root.firstChild;
+          const params = currRoute.params;
+          const source = params.source;
+          const btn = document.querySelector('[value='+(source || currRoute.url[0])+']') as HTMLElement;
+          if (btn) {
+            if (this.active) {
+              this.active.classList.remove('active');
+            }
+            btn.classList.add("active");
+            this.active = btn;
+          }
+
+      }
+  });
   }
 
 }
