@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router,ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Globals } from '../globals';
 import { HttpClient } from '@angular/common/http';
@@ -11,6 +11,7 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  private subscribed: any;
   private searchQuery: string = "";
   private items: any = null;
   private source: string;
@@ -48,7 +49,6 @@ export class SearchComponent implements OnInit {
     const url = "https://www.youtube.com/embed/" + info.id.videoId;
     this.url = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     this.contentSelected = info.id.videoId;
-    console.log(this.contentSelected);
   }
 
   search(form) {
@@ -60,15 +60,21 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.subscribed.unsubscribe();
+  }
+
   ngOnInit() {
     this.searchQuery = this.globals.searchQuery;
 
-    this.router.events
+    this.subscribed = this.router.events
     .subscribe(
       event => {
         if(event instanceof NavigationEnd) {
           this.items = null;
           this.source = this.route.snapshot.paramMap.get("source");
+          this.contentSelected = null;
+          this.url = null;
           this.grabResources();
         }
       }

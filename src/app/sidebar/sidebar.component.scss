@@ -20,7 +20,7 @@
 
 }
 
-#side-bar ul li .sideBtn {
+.sideBtn {
     text-decoration: none;
     color:white;
     height:60px;
@@ -35,7 +35,7 @@
     border: none;
 }
 
-#side-bar ul li .sideBtn:hover {
+.sideBtn:hover,.sideBtn.active {
     color:cyan;
 
 }
