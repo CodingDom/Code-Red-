@@ -8,6 +8,7 @@ import { Globals } from '../globals';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  private active: HTMLElement;
 
   constructor(private route: ActivatedRoute, private router: Router, private globals: Globals) { }
 
@@ -38,6 +39,12 @@ export class SidebarComponent implements OnInit {
         this.router.navigate(["search", {source: value, q: searchQuery}]);
         break;
     }
+    
+    if (this.active) {
+      this.active.classList.remove('active');
+    }
+    btn.classList.add("active");
+    this.active = btn;
   }
 
   ngOnInit() {
