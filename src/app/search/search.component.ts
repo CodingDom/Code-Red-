@@ -3,6 +3,7 @@ import { Router,ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Globals } from '../globals';
 import { HttpClient } from '@angular/common/http';
 import { filter } from 'minimatch';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-search',
@@ -13,8 +14,10 @@ export class SearchComponent implements OnInit {
   private searchQuery: string = "";
   private items: any = null;
   private source: string;
+  private contentSelected: any;
+  private url: SafeResourceUrl;
 
-  constructor(private http: HttpClient,private route: ActivatedRoute, private router: Router, private globals: Globals) { }
+  constructor(private http: HttpClient,private route: ActivatedRoute, private router: Router, private globals: Globals, private sanitizer: DomSanitizer) { }
 
   grabResources() {
     const validSources = ["youtube","reddit","stackoverflow"];
@@ -39,6 +42,13 @@ export class SearchComponent implements OnInit {
         console.log(resp.items);
       },
     );
+  }
+
+  openVideo(info) {
+    const url = "https://www.youtube.com/embed/" + info.id.videoId;
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    this.contentSelected = info.id.videoId;
+    console.log(this.contentSelected);
   }
 
   search(form) {

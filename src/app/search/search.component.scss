@@ -33,31 +33,29 @@
     border: 1px solid white;
 }
 
+.tubeCard:hover {
+    border-color: cyan;
+}
+
 /* Video Css */
 
-.video-area {
-margin:20px;
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:54.25%;
+    position:relative;
+    width: 100%;
+    height:0;
 }
-.vidbtn {
-    margin:10px;
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
 }
 
 .editorArea {
     display:hidden;
-}
-
-/* Reddit CSS */
-
-.redditCard {
-    margin:10px;
-}
-
-.card-header {
-    background-color:#f5a148;
-}
-
-.card-footer {
-    background-color:#f5a148;
 }
 
 .container,.container-fluid {

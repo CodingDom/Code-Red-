@@ -1,6 +1,6 @@
 <div class="container mainPage">
     <div class="row">
-        <div class="col-sm-9 offset-sm-1 d-flex justify-content-center">
+        <div class="col-sm-10 offset-sm-1 d-flex justify-content-center">
             <form #searchForm="ngForm" (ngSubmit)="search(searchForm)" class="form-inline my-2 my-lg-0 mysearch">
                 <input class="form-control mr-lg-2" type="search" id="search" placeholder="Search" aria-label="Search"
                     name="search" [ngModel]='searchQuery'>
@@ -14,17 +14,28 @@
     <div class="container-fluid">
         <div class="row">
             <ng-container *ngIf="source == 'youtube'">
-                <div class="col-sm-9 offset-sm-1">
-                    <div class="card-columns">
-                        <div class="card tubeCard" *ngFor='let item of items'>
-                            <img class="card-img-top" [src]="item.snippet.thumbnails.high.url"
-                                [alt]="item.snippet.title">
-                            <div class="card-body">
-                                <h5 class="card-title" id="dataTitle" [innerHtml]="item.snippet.title"></h5>
-                            </div>
+                <ng-container *ngIf="!contentSelected">
+                    <div class="col-sm-10 offset-sm-1">
+                        <div class="card-columns">
+                            <button class="card tubeCard" *ngFor='let item of items' (click)="openVideo(item)">
+                                <img class="card-img-top" [src]="item.snippet.thumbnails.high.url"
+                                    [alt]="item.snippet.title">
+                                <div class="card-body">
+                                    <h5 class="card-title" id="dataTitle" [innerHtml]="item.snippet.title"></h5>
+                                </div>
+                            </button>
                         </div>
                     </div>
-                </div>
+                </ng-container>
+                <ng-container *ngIf="contentSelected">
+                    <div class="col-sm-10 offset-sm-1">
+                        <div class="video-responsive">
+                            <iframe width="610" height="365" [src]="url"
+                            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; 
+                            picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </ng-container>
             </ng-container>
 
             <ng-container *ngIf="source == 'reddit'">
@@ -63,7 +74,7 @@
 <ng-container *ngIf="searchQuery != '' && !items">
     <div class="container">
         <div class="row">
-            <div class="col-sm-9 offset-sm-1 d-flex justify-content-center">
+            <div class="col-sm-10 offset-sm-1 d-flex justify-content-center">
                 <div class="spinner-border text-primary" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>

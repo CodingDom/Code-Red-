@@ -11,6 +11,7 @@ import { SearchComponent } from './search/search.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { Globals } from './globals';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
 // import 'rxjs/add/operator/catch';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     HomepageComponent,
     SearchComponent,
-    SidebarComponent
+    SidebarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
