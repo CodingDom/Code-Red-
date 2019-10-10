@@ -29,7 +29,7 @@ export class SidebarComponent implements OnInit {
         }
       break;
       case "code":
-
+        this.router.navigate(['editor']);
       break;
       case "favorites":
 

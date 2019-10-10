@@ -30,7 +30,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/ace-builds/src-min/ace.js",
+              "./node_modules/ace-builds/src-min/mode-sql.js",
+              "./node_modules/ace-builds/src-min/theme-twilight.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -95,7 +99,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/ace-builds/src-min/ace.js",
+              "./node_modules/ace-builds/src-min/mode-sql.js",
+              "./node_modules/ace-builds/src-min/theme-twilight.js"
+            ]
           }
         },
         "lint": {
