@@ -81,6 +81,9 @@ export class SearchComponent implements OnInit {
     );
 
     this.grabResources();
+    if (document["stacktack"]) {
+      document["stacktack"]();
+    }
   }
 
 }
