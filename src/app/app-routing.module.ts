@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'search', component: SearchComponent},
   {path: 'users/:id', component: ProfileComponent},
-  {path: 'editor', component: EditorPageComponent}
+  {path: 'editor', component: EditorPageComponent},
+  {path: '*', redirectTo: ''}
 ];
 
 @NgModule({
