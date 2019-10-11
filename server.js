@@ -20,6 +20,10 @@ app.use(function(req, res, next) {
   next();
 });
 
+// Serve up static assets (usually on heroku)
+const distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
 // We need to use sessions to keep track of our user's login status
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
@@ -33,14 +37,10 @@ app.use(isAuthenticated);
 
 // Routes
 require("./routes/apiRoutes")(app, passport);
-
-app.use(function(req, res) {
-  res.sendFile(path.join(__dirname, '/dist', 'index.html'));
+app.get('*', function(req, res) {
+  console.log("Non-api route");
+  res.sendfile('./dist/index.html');
 });
-
-// Serve up static assets (usually on heroku)
-const distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
 
 const syncOptions = { force: true };
 
