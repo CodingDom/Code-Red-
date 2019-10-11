@@ -1,4 +1,4 @@
-<div id="side-bar" (click)='menuButton($event)'>
+<div id="side-bar" (click)='menuButton($event)' [@openClose]="activeRoute != 'login' ? 'open' : 'closed'">
     <ul>
         <li><button class="icon ion-md-person sideBtn" value="profile"><span class="title">Profile</span></button></li>
         <li><button class="icon ion-logo-youtube sideBtn" value="youtube"><span class="title">YouTube</span></button></li>

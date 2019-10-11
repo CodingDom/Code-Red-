@@ -163,7 +163,7 @@ module.exports = function(app, passport) {
     })
     .catch(function(err) {
       console.log(err);
-      res.status(500).end();
+      res.json({erro: true, message: "YouTube API Daily Quota Reached."})
     });
   });
 

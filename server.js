@@ -38,7 +38,6 @@ app.use(isAuthenticated);
 // Routes
 require("./routes/apiRoutes")(app, passport);
 app.get('*', function(req, res) {
-  console.log("Non-api route");
   res.sendfile('./dist/index.html');
 });
 

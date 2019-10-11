@@ -1,11 +1,25 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, RoutesRecognized } from '@angular/router';
 import { Globals } from '../globals';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  animations: [
+    trigger('openClose', [
+      state('open', style({
+        left: 0
+      })),
+      state('closed', style({
+        left: '-50px'
+      })),
+      transition('open <=> closed', [
+        animate('0.25s')
+      ]),
+    ]),
+  ],
 })
 export class SidebarComponent implements OnInit {
   private active: HTMLElement;
@@ -56,8 +70,9 @@ export class SidebarComponent implements OnInit {
       if (val instanceof RoutesRecognized) {
           const currRoute = val.state.root.firstChild;
           const params = currRoute.params;
-          const source = params.source;
-          const btn = document.querySelector('[value='+(source || currRoute.url[0])+']') as HTMLElement;
+          const source = (params.source || currRoute.url[0]);
+          const btn = document.querySelector('[value='+(source)+']') as HTMLElement;
+          this.activeRoute = source;
           if (btn) {
             if (this.active) {
               this.active.classList.remove('active');
@@ -65,7 +80,6 @@ export class SidebarComponent implements OnInit {
             btn.classList.add("active");
             this.active = btn;
           }
-
       }
   });
   }

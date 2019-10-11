@@ -39,8 +39,12 @@ export class SearchComponent implements OnInit {
       }
     }).subscribe(
       (resp: any) => {
-        this.items = resp.items;
-        console.log(resp.items);
+        if (!resp.error) {
+          this.items = resp.items;
+          console.log(resp.items);
+        } else {
+          console.log("Quota reached.");
+        }
       },
     );
   }

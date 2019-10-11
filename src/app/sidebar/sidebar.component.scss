@@ -1,13 +1,11 @@
 #side-bar {
     position: fixed;
     z-index: 5;
-    // float:left;
     width:50px;
     height:100%;
-    // left:-100px;
     background: #2c2c2c;
     overflow: hidden;
-    transition: 0.8s all;
+    // transition: 0.8s all;
 }
 
 #side-bar ul {
