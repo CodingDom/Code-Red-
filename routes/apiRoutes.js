@@ -17,8 +17,9 @@ module.exports = function(app, passport) {
       updatedInfo.blurb = req.body.blurb;
     }
     db.User.update(updatedInfo, { where: { id: req.params.id } })
-      .then(function() {
-        res.status(200).end();
+      .then(function(resp) {
+        Object.keys(req.body).forEach(key => req.user[key]=req.body[key]);
+        res.json({success: true});
       })
       .catch(function(err) {
         console.log(err);
@@ -70,7 +71,9 @@ module.exports = function(app, passport) {
         if (err) { return next(err); }
         const userInfo = {
           email: req.user.email,
-          id: req.user.id
+          id: req.user.id,
+          displayName: req.user.displayName,
+          blurb: req.user.blurb
         }
         return res.json({success: true, ...userInfo});
       });
@@ -108,10 +111,11 @@ module.exports = function(app, passport) {
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      console.log(req.user);
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
+        displayName: req.user.displayName,
+        blurb: req.user.blurb
       });
     }
   });

@@ -46,7 +46,9 @@ export class LoginComponent implements OnInit {
     if (resp.success) {
       this.globals.user = {
         email: resp.email,
-        id: resp.id
+        id: resp.id,
+        name: resp.displayName,
+        blurb: resp.blurb
       }
       this.router.navigate([""]);
     } else {

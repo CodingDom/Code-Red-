@@ -3,8 +3,8 @@
         <div class="col-sm-10 offset-sm-1">
                 <div class="jumbotron holder">
                     <img src="./assets/images/placeholder.png" alt="Profile Picture" class="img-thumbnail">
-                    <h2 class="" style="width:75%;"><span class="content" contenteditable="false" (focusout)='save($event)'>{{ name }}</span><span (click)="edit($event)" class="icon ion-md-create"></span></h2>
-                    <p class="lead"><span class="content" contenteditable="false" (focusout)='save($event)'>{{ blurb }}</span><span (click)="edit($event)" class="icon ion-md-create"></span></p>
+                    <h2 style="width:75%;"><span id="displayName" class="content" contenteditable="false" (focusout)='save($event)'>{{ name }}</span><span *ngIf="owner" (click)="edit($event)" class="icon ion-md-create"></span></h2>
+                    <p class="lead"><span id="blurb" class="content" contenteditable="false" (focusout)='save($event)'>{{ blurb }}</span><span *ngIf="owner" (click)="edit($event)" class="icon ion-md-create"></span></p>
                     <hr class="my-4">
                     <h4>Bookmarked Content: (0)</h4>
                 </div>

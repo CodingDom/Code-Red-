@@ -1,6 +1,6 @@
 <div id="side-bar" (click)='menuButton($event)' [@openClose]="activeRoute != 'login' ? 'open' : 'closed'">
     <ul>
-        <li><button class="icon ion-md-person sideBtn" value="profile"><span class="title">Profile</span></button></li>
+        <li><button class="icon ion-md-person sideBtn" value="profile"><span class="{{ globals.user && active }} title">{{globals.user && 'Profile' || 'Sign In'}}</span></button></li>
         <li><button class="icon ion-logo-youtube sideBtn" value="youtube"><span class="title">YouTube</span></button></li>
         <li><button class="icon ion-logo-reddit sideBtn" value="reddit"><span class="title">Reddit</span></button></li>
         <li><button class="icon ion-md-filing sideBtn" value="stackoverflow"><span class="title">Stack Overflow</span></button></li>
