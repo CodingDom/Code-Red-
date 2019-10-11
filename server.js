@@ -1,27 +1,23 @@
 require("dotenv").config();
-var express = require("express");
-var session = require("express-session");
+const express = require("express");
+const session = require("express-session");
 // Requiring passport as we've configured it
-var passport = require("./config/passport");
+const passport = require("./config/passport");
 
-var db = require("./models");
+const db = require("./models");
 
-var app = express();
-var PORT = process.env.PORT || 3000;
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-
-// Serve up static assets (usually on heroku)
-const distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // We need to use sessions to keep track of our user's login status
 app.use(
@@ -31,13 +27,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Requiring our custom middleware for checking if a user is logged in
-var isAuthenticated = require("./config/middleware/isAuthenticated");
+const isAuthenticated = require("./config/middleware/isAuthenticated");
 app.use(isAuthenticated);
 
 // Routes
 require("./routes/apiRoutes")(app, passport);
 
-var syncOptions = { force: true };
+// Serve up static assets (usually on heroku)
+const distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
+const syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
