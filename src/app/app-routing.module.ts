@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'search', component: SearchComponent},
   {path: 'users/:id', component: ProfileComponent},
   {path: 'editor', component: EditorPageComponent},
-  {path: '*', redirectTo: ''}
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
