@@ -7,12 +7,19 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         isEmail: true
       },
-      allowNull: false
+      allowNull: false,
+      unique: {
+        args: [true],
+        msg: "OOPS! Looks like you already have an account with this email address. Please try to login."
+      }
     },
     password: {
       type: DataTypes.STRING,
       validate: {
-        len: [8]
+        len: {
+          args: [8,20],
+          msg: "Password must be 8-20 characters."
+        }
       },
       allowNull: false
     },

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'app-login-component',
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
   private showPassword: boolean = false;
   private errorMessages: any = [];
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private globals: Globals) { }
 
   togglePassword() {
     this.showPassword = !this.showPassword;
@@ -43,14 +44,18 @@ export class LoginComponent implements OnInit {
 
   handleResponse(resp: any) {
     if (resp.success) {
+      this.globals.user = {
+        email: resp.email,
+        id: resp.id
+      }
       this.router.navigate([""]);
     } else {
       const msg = resp.message;
-      console.log(msg);
+      console.log(resp);
       this.errorMessages.push((msg || "OOPS! Looks like something went wrong.."));
       setTimeout(() => {
         this.errorMessages.shift();
-      },2000);
+      },3500);
     }
   }
 
@@ -63,17 +68,7 @@ export class LoginComponent implements OnInit {
 
     if (this.mode == "login") {
       this.http.post("/api/login", userInfo).subscribe(
-        (resp: any) => {
-          if (resp.success) {
-            this.router.navigate([""]);
-          } else {
-            const msg = resp.message;
-            this.errorMessages.push((msg || "OOPS! Looks like something went wrong.."));
-            setTimeout(() => {
-              this.errorMessages.shift();
-            },2000);
-          }
-        }, 
+        this.handleResponse.bind(this), 
         error => {
           console.log(error.message);
         }

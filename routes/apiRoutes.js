@@ -89,8 +89,8 @@ module.exports = function(app, passport) {
         res.redirect(307, "/api/login");
       })
       .catch(function(err) {
-        console.log("Authentication Error Occurred: " + err);
-        res.json(err);
+        console.log("Authentication Error Occurred: " + err.message);
+        res.json({success: false, message: err.message});
       });
   });
 
