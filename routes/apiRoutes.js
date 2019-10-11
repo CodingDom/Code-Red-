@@ -121,6 +121,8 @@ module.exports = function(app, passport) {
       res.json({
         email: req.user.email,
         id: req.user.id,
+        displayName: req.user.displayName,
+        blurb: req.user.blurb,
         owner: true
       }); 
     } else {

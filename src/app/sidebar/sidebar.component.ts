@@ -70,7 +70,7 @@ export class SidebarComponent implements OnInit {
       if (val instanceof RoutesRecognized) {
           const currRoute = val.state.root.firstChild;
           const params = currRoute.params;
-          const source = (params.source || currRoute.url[0]);
+          const source = (params.source || ((currRoute.url[1] && this.globals.user && this.globals.user.id && currRoute.url[1] == this.globals.user.id && "profile")) || currRoute.url[0]);
           const btn = document.querySelector('[value='+(source)+']') as HTMLElement;
           this.activeRoute = source;
           if (btn) {
@@ -79,6 +79,10 @@ export class SidebarComponent implements OnInit {
             }
             btn.classList.add("active");
             this.active = btn;
+          } else if (source == "" || !source) {
+            if (this.active) {
+              this.active.classList.remove('active');
+            }
           }
       }
   });

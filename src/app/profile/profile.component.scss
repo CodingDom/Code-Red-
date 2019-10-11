@@ -17,11 +17,29 @@
 
 h2 {
     display: inline-block;
+    position: relative;
     padding-left: 10px;
+}
+
+.content:focus {
+    background-color: #505050;
+    outline: none;
+}
+
+.icon {
+    position: absolute;
+    left: 100%;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.icon:hover {
+    color: cyan;
 }
 
 p {
     display: inline;
+    position: relative;
     padding-left: 10px;
 }
 
