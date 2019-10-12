@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-10 offset-sm-1 d-flex justify-content-center">
             <form #searchForm="ngForm" (ngSubmit)="search(searchForm)" class="form-inline my-2 my-lg-0 mysearch">
-                <input class="form-control mr-lg-2" type="search" id="search" placeholder="Search" aria-label="Search"
+                <input class="form-control mr-lg-2" type="search" id="search" [placeholder]="'Search ' + source" aria-label="Search"
                     name="search" [ngModel]='searchQuery'>
                 <button class="btn btn-outline-primary my-2 my-sm-0 searchbtn" type="submit">Search</button>
             </form>
