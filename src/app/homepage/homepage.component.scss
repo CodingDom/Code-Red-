@@ -86,19 +86,15 @@ img {
     max-width: 80%;
 }
 
-.search-box:hover > .search-txt{
+.search-box:hover > .search-txt, .search-txt:focus, .search-txt.active {
     width: 400px;
     padding: 0 6px;
 }
 
-.search-txt:focus {
-    width: 400px;
-    padding: 0 6px;
-}
-
-.search-box:hover > .search-btn{
+.search-box:hover > .search-btn, .search-txt:focus + .search-btn, .search-txt.active + .search-btn {
     background:white;
 }
+
 .search-txt{
     border:none;
     background:none;
