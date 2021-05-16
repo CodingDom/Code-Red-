@@ -38,7 +38,7 @@ app.use(isAuthenticated);
 // Routes
 require("./routes/apiRoutes")(app, passport);
 app.get('*', function(req, res) {
-  res.sendfile('./dist/index.html');
+  res.sendFile(__dirname + '/dist/index.html');
 });
 
 const syncOptions = { force: true };
