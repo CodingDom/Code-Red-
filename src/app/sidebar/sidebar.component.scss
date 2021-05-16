@@ -51,6 +51,10 @@
     color:cyan;
 }
 
+.sideBtn:focus {
+    outline: none;
+}
+
 .sideBtn:hover .title, .sideBtn.active .title {
     display: initial;
 }
